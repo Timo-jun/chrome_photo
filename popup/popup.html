@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>自选基金助手</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <script src="../js/jquery.js"></script>
+  <!-- <link rel="stylesheet" href="popup.css"> -->
+  <!-- <script src="https://jic.talkingdata.com/app/h5/v1?appid=F3BA868110984DA28BD73CDAB0DC7D8A&vn=v2.3.0&vc=2.3.0"></script> -->
+  
+</head>
+<style>
+#app{
+  width: 300px;
+  height: auto;
+}
+#option input{
+    outline-style: none ;
+    border: 1px solid #ccc; 
+    border-radius: 3px;
+    padding: 5px 5px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: "Microsoft soft";
+    margin-bottom: 10px;
+}
+#app{
+  max-height: 300px;
+  overflow: auto;
+  margin-left: 10px;
+}
+div::-webkit-scrollbar{
+  width:10px;
+  height:10px;
+  /**/
+}
+div::-webkit-scrollbar-track{
+  background: rgb(239, 239, 239);
+  border-radius:2px;
+}
+div::-webkit-scrollbar-thumb{
+  background: #bfbfbf;
+  border-radius:10px;
+}
+div::-webkit-scrollbar-thumb:hover{
+  background: #333;
+}
+div::-webkit-scrollbar-corner{
+  background: #179a16;
+}
+
+button{ /* 按钮美化 */
+	width: 70px; /* 宽度 */
+	height: 30px; /* 高度 */
+	border-width: 0px; /* 边框宽度 */
+	border-radius: 3px; /* 边框半径 */
+	background: #1E90FF; /* 背景颜色 */
+	cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+	outline: none; /* 不显示轮廓线 */
+	font-family: Microsoft YaHei; /* 设置字体 */
+	color: white; /* 字体颜色 */
+	font-size: 13px; /* 字体大小 */
+}
+button:hover { /* 鼠标移入按钮范围时改变颜色 */
+	background: #5599FF;
+}
+#ww:hover{
+  border-color: aqua;
+}
+.qq{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-image: url(../images/添加.svg);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -15px; 
+  margin-left: -15px; 
+  pointer-events: none;
+}
+#ww{
+  position: relative;
+}
+#file{
+  width:100px;
+  height:100px;
+  float: left;
+  opacity: 0;
+  cursor: pointer;
+}
+#option{
+  margin-top: 10px;
+}
+.upload{
+  width:100px;
+  height:100px;
+  border-radius:5px;
+  border-style: dashed;
+  border-width: 1px;
+  text-align: center;
+  position: relative;
+}
+#photo{
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+</style>
+
+<body style="margin:0">
+  <div id="app" >
+    <div class='upload' id='ww' >
+      <i class ="qq"></i>
+      <input type='file' id='file'></button>
+      <img id='photo'>
+    </div>
+    <div id='option'>
+    </div>
+    <div style="margin-bottom: 10px;">
+    <button id ='addop'>增加选项</button>
+    <button id="save">保存</button>
+  </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+
+</html>
