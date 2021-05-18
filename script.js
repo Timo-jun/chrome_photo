@@ -17,6 +17,7 @@ window.onload = function(){
         // a.style.opacity = '0'
         // console.log('11111')
         //2222
+        //33333
         document.body.onmousemove = function(e){
             // console.log(e.clientY,imgY)
             // console.log(e.clientX,imgX)
