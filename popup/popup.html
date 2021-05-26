@@ -6,6 +6,7 @@
   <title>自选基金助手</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <script src="../js/jquery.js"></script>
+  <script src="../js/qrcode.min.js"></script>
   <!-- <link rel="stylesheet" href="popup.css"> -->
   <!-- <script src="https://jic.talkingdata.com/app/h5/v1?appid=F3BA868110984DA28BD73CDAB0DC7D8A&vn=v2.3.0&vc=2.3.0"></script> -->
   
@@ -14,6 +15,8 @@
 #app{
   width: 300px;
   height: auto;
+  border: 1px dashed skyblue;
+  min-height: 300px;
 }
 #option input{
     outline-style: none ;
@@ -28,7 +31,7 @@
 #app{
   max-height: 300px;
   overflow: auto;
-  margin-left: 10px;
+  /* margin-left: 10px; */
 }
 div::-webkit-scrollbar{
   width:10px;
@@ -110,21 +113,68 @@ button:hover { /* 鼠标移入按钮范围时改变颜色 */
   transform: translate(-50%, -50%);
   pointer-events: none;
 }
+#navigator{
+  height: 30px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: #eee;
+  font-size: 0px;
+  /* line-height: 30px; */
+  /* text-align: center; */
+  margin-bottom: 10px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+.navigator{
+  display: inline-block;
+  flex: auto;
+  font-size: 10px;
+  cursor: pointer;
+  text-align: center;
+  line-height: 30px;
+  height: 100%;
+}
+#qrCode{
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+#qrCode > textarea{
+  width:200px;
+  height:50%;
+}
 </style>
 
+
 <body style="margin:0">
-  <div id="app" >
-    <div class='upload' id='ww' >
-      <i class ="qq"></i>
-      <input type='file' id='file'></button>
-      <img id='photo'>
+  <div id="app">
+    <div id='navigator'>
+      <div class='navigator 1' >照片设置</div>
+      <div class='navigator 2' >二二二</div>
     </div>
-    <div id='option'>
+    <div id="container">
+      <div id='1'>
+        <div class='upload' id='ww'>
+          <i class="qq"></i>
+          <input type='file' id='file'></button>
+          <img id='photo'>
+        </div>
+        <div id='option'>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <button id='addop'>增加选项</button>
+          <button id="save">保存</button>
+        </div>
+      </div>
+      <div id='2' style="display: none;">
+        <div id='qrCode'>
+          <textarea placeholder="链接地址" style="display: none;"></textarea>
+          <div id='code' ></div>
+          <button id='product'>重新生成</button>
+        </div>
+      </div>
     </div>
-    <div style="margin-bottom: 10px;">
-    <button id ='addop'>增加选项</button>
-    <button id="save">保存</button>
-  </div>
   </div>
   <script src="popup.js"></script>
 </body>

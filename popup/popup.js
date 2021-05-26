@@ -1,11 +1,33 @@
 window.onload = function(){
-    chrome.storage.local.get(['result','aa'],function(result){
+    chrome.storage.local.get(['result','aa','qrcode'],function(result){
         for(let key in result.result){
             create_input(key,result.result[key])
         }
         if(result.aa != undefined){
             preImg(result.aa)
         }
+        var a = $('#code')
+        console.log(result)
+        if(result.qrcode == undefined || result.qrcode == ""){
+            var qrcode = new QRCode(a[0], {
+                text: "http://www.runoob.com",
+                width: 128,
+                height: 128,
+                colorDark : "#000000",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        }else{
+            var qrcode = new QRCode(a[0], {
+                text: result.qrcode,
+                width: 128,
+                height: 128,
+                colorDark : "#000000",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        }
+        window.qrcode = qrcode
     })
 }
 
@@ -105,3 +127,38 @@ $("#save").click(function(){
 })
 
 
+$(".navigator").click(function(e){
+    $(".navigator").css({"background-color":"#fff","color":"black"})
+    $(e.target).css({"background-color":"#1E90FF","color":"#fff"})
+    var b = e.target.classList[1]
+    var tar = document.getElementById(b)
+    var bef = $('#container').children('div')
+    for(i of bef){
+        i.style.display = 'none'
+    }
+    tar.style.display='block'
+})
+
+$("#product").click(function(e){
+    // new QRCode(a[0], "http://www.runoob.com")
+    var a = $('#qrCode > textarea')
+    var b = $('#code')
+    console.log(a)
+    if(a.css('display')=='none'){
+        b.css('display','none')
+        a.css('display','block')
+        e.target.innerText ='生成'
+    }else{
+        qrcode.makeCode(a.val())
+        console.log(a.text())
+        a.css('display','none')
+        b.css('display','block')
+        e.target.innerText ='重新生成'
+        chrome.storage.local.set({qrcode: a.val()})
+    }
+})
+
+window.onbeforeunload= function(event) { 
+    return confirm("21121212？"); 
+}
+// window.onunload = function(event) { return confirm("确定离开此页面吗？"); }
