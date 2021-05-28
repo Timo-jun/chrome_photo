@@ -1,4 +1,4 @@
-# Chrome extension to disable WebSockets
+# Chrome extension to Photo
 
 ## Installation
 
